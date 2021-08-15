@@ -1,0 +1,19 @@
+{
+  "name": "com.helvest.richtextextension",
+  "version": "1.0.0",
+  "displayName": "Rich Text Extension",
+  "description": "Script to create ScriptableObjects that you can use as Pools for Components",
+  "keywords": [
+    "Text",
+    "String",
+    "Rich"
+  ],
+  "author": {
+    "name": "Pedro Dominic\u00e9 (Helvest)",
+    "url": "https://twitter.com/HelvestEpic"
+  },
+  "repository": {
+    "url": "https://github.com/Helvest/Unity-Package-Rich-Text-Extension.git",
+    "type": "git"
+  }
+}
