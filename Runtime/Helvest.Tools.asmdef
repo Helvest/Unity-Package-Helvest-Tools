@@ -1,6 +1,6 @@
 {
-    "name": "Helvest.RichTextExtension",
-    "rootNamespace": "RichText",
+    "name": "Helvest.Tools",
+    "rootNamespace": "Helvest.Tools",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
