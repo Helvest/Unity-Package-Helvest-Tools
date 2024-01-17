@@ -15,13 +15,13 @@ namespace Helvest.Tools
 		public enum DebugLevel
 		{
 			None = 0,
+			UseDebugAction = 1,
+			LogInfo = 1 << 1,
+			LogDebug = 1 << 2,
+			LogWarning = 1 << 3,
+			LogException = 1 << 4,
+			LogError = 1 << 5,
 			AllLog = LogInfo | LogDebug | LogWarning | LogException | LogError,
-			LogInfo = 1,
-			LogDebug = 1 << 1,
-			LogWarning = 1 << 2,
-			LogException = 1 << 3,
-			LogError = 1 << 4,
-			UseDebugAction = 1 << 5,
 			Everything = 63
 		}
 
