@@ -15,19 +15,19 @@ namespace Helvest.Tools
 		public enum DebugLevel
 		{
 			None = 0,
-			UseDebugAction = 1,
-			LogInfo = 1 << 1,
-			LogDebug = 1 << 2,
-			LogWarning = 1 << 3,
-			LogException = 1 << 4,
-			LogError = 1 << 5,
-			AllLog = LogInfo | LogDebug | LogWarning | LogException | LogError,
-			Everything = 63
+			LogInfo = 1 << 0,
+			LogDebug = 1 << 1,
+			LogWarning = 1 << 2,
+			LogException = 1 << 3,
+			LogError = 1 << 4,
+			AllImportantLog = LogWarning | LogException | LogError,
 		}
 
 		#endregion
 
 		#region Fields
+
+		public bool enable = true;
 
 		public Object cachedContext = default;
 
@@ -45,8 +45,8 @@ namespace Helvest.Tools
 #endif
 
 		public DebugLevel debugLevelInBuild = DebugLevel.LogException | DebugLevel.LogError;
-		public DebugLevel debugLevelInDebug = DebugLevel.LogWarning | DebugLevel.LogException | DebugLevel.LogError;
-		public DebugLevel debugLevelInEditor = DebugLevel.Everything;
+		public DebugLevel debugLevelInDebug = DebugLevel.AllImportantLog;
+		public DebugLevel debugLevelInEditor = DebugLevel.AllImportantLog;
 
 #if UNITY_EDITOR
 		public DebugLevel GetDebugLevel => debugLevelInEditor;
@@ -71,7 +71,7 @@ namespace Helvest.Tools
 
 		public void Log(string msg, DebugLevel level, Object context = null, Color color = default)
 		{
-			if (!GetDebugLevel.HasFlag(level))
+			if (!enable || !GetDebugLevel.HasFlag(level))
 			{
 				return;
 			}
@@ -143,7 +143,7 @@ namespace Helvest.Tools
 
 		public void LogException(Exception e, Object context = null)
 		{
-			if (!GetDebugLevel.HasFlag(DebugLevel.LogException))
+			if (!enable || !GetDebugLevel.HasFlag(DebugLevel.LogException))
 			{
 				return;
 			}
